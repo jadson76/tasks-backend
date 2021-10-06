@@ -37,8 +37,11 @@ pipeline {
         }
         stage('API Test'){
             steps{
-                git credentialsId: '997dd19c-c595-4e5e-86d0-c402c512b18f', url: 'https://github.com/jadson76/tasks-api-test' 
-                bat 'mvn test'                               
+                dir('api-test') {
+                    git credentialsId: '997dd19c-c595-4e5e-86d0-c402c512b18f', url: 'https://github.com/jadson76/tasks-api-test' 
+                    bat 'mvn test'                               
+                }                  
+                
             }
         }
     }
